@@ -1,4 +1,5 @@
 import React from "react";
+import Wrapper from "./Wrapper";
 
 const Car = ({children, color}) => {
 
@@ -10,10 +11,10 @@ const Car = ({children, color}) => {
     }
 
     return children && (
-        <div style={ {backgroundColor: 'pink', width:'400px', padding: '10px', margin: '5px auto'} }>
+        <Wrapper>
           <p>Marque: { children } </p>
           <p>Couleu: { colorInfo }</p>
-        </div>
+        </Wrapper>
 
     )
 
