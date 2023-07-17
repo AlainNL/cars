@@ -2,22 +2,20 @@ import React from "react";
 
 const Car = ({children, color}) => {
 
-    const colorInfor = color ? (<p>Couleur: { color } </p>) : (<p>Couleur: Néant</p>);
-
-    if(children) {
-      return (
-          <div style={ {backgroundColor: 'pink', width:'400px', padding: '10px', margin: '5px auto'} }>
-            <p>Marque: { children } </p>
-            { colorInfor }
-          </div>
-      )
+    let colorInfo="";
+    if (color) {
+        colorInfo = color;
     } else {
-      return (
-          <div style={ {backgroundColor: 'pink', width:'400px', padding: '10px', margin: '5px auto'} }>
-            <p>Pas de data!</p>
-          </div>
-      )
+        colorInfo = "Néant";
     }
+
+    return children && (
+        <div style={ {backgroundColor: 'pink', width:'400px', padding: '10px', margin: '5px auto'} }>
+          <p>Marque: { children } </p>
+          <p>Couleu: { colorInfo }</p>
+        </div>
+
+    )
 
 }
 
