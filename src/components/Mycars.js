@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import Car from './Cars'
+import Welcome from './Welcome'
 
 class Mycars extends Component {
 
@@ -31,6 +32,7 @@ class Mycars extends Component {
           <div>
               <h1>{this.state.title}</h1>
 
+              <Welcome />
               <button onClick={this.addTenYears}> + 10 ans</button>
 
               {
