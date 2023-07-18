@@ -1,30 +1,51 @@
-import React, { Component} from "react";
-import Car from "./Cars";
-import Wrapper from "./Wrapper";
-import MyHeader from "./Header";
+import { Component } from 'react'
+import Car from './Cars'
 
 class Mycars extends Component {
 
   state = {
-      cars: ["Ford", "Mercedes", "Peugeot"]
+    cars: [
+      { name: 'Ford', color: 'red', year: 2022},
+      { name: 'Mercedes', color: 'black', year: 2010},
+      { name: 'Peugeot', color: 'red', year: 2000}
+    ],
+    title: 'Mon Catalogue Voitures'
+  }
+
+  addTenYears = () => {
+
+      const updatedState = this.state.cars.map((param) => {
+          return param.year -=10;
+      })
+
+      this.setState({
+          updatedState
+      })
   }
 
   render() {
+
+    const year = new Date().getFullYear();
+
       return (
-          <div className="Cars">
-              <Wrapper>
-                  <MyHeader
-                    myStyle={this.props.color}
-                  >
-                  {this.props.title}
-                  </MyHeader>
-              </Wrapper>
-              <Car color="red">{this.state.cars[0]}</Car>
-              <Car>{this.state.cars[1]}</Car>
-              <Car>{this.state.cars[2]}</Car>
+          <div>
+              <h1>{this.state.title}</h1>
+
+              <button onClick={this.addTenYears}> + 10 ans</button>
+
+              {
+                this.state.cars.map((car, index) => {
+                  return(
+                    <div key={index}>
+                      <Car name={car.name} color={car.color} year={year - car.year + ' ans'}/>
+                    </div>
+                    )
+                })
+              }
           </div>
+
       )
   }
 }
 
-export default Mycars;
+export default Mycars
